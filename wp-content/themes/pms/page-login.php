@@ -2,6 +2,24 @@
 /*
 Template Name: Login Page
 */
+// if (is_user_logged_in()) wp_redirect(home_url());
+
+// if (isset($_POST['login'])) {
+
+//     // Sanitize and validate user input
+//     $email = sanitize_text_field($_POST['email']);
+//     $password = sanitize_text_field($_POST['password']);
+
+//     $user_verify = wp_signon([
+//         'user_login' => $email,
+//         'user_password' => $password,
+//         'remember' => true,
+//     ]);
+
+//     if (is_wp_error($user_verify)) {
+//         $error_msg = $user_verify->get_error_message();
+//     }
+// }
 ?>
 
 <?php get_header(); ?>

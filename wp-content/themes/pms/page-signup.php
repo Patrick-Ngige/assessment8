@@ -2,6 +2,33 @@
 /*
 Template Name: Sign up Page
 */
+
+// if (is_user_logged_in()) wp_redirect(home_url());
+
+// if (isset($_POST['signup'])) {
+//     $user_id = wp_insert_user([
+//         'user_login' => $_POST['email'],
+//         'user_pass' => $_POST['password'],
+//         'user_email' => $_POST['email'],
+//         'role' => $_POST['role']
+//     ]);
+
+//     if (!is_wp_error($user_id)) {
+//         update_user_meta($user_id, 'employee-number', $_POST['employee-number']);
+//         // update_user_meta($user_id, 'phone', $_POST['phone']);
+
+//         $user = wp_signon([
+//             'user_login' => $_POST['email'],
+//             'user_password' => $_POST['password']
+//         ]);
+
+//         if (!is_wp_error($user)) {
+//             $error_msg = 'Register failed: ' . $user->get_error_message();
+//         }
+//     } else {
+//         $error_msg = $user_id->get_error_message();
+//     }
+// }
 ?>
 
 <?php get_header(); ?>
