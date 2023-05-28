@@ -16,22 +16,39 @@ function pms_script_enqueue(){
 
 add_action('wp_enqueue_scripts', 'pms_script_enqueue');
 
-// SHORTCODES FRAMEWORK
-function attributes_short_code($props){
-    $p = shortcode_atts([
-            'label' => 'Name',
-            'value' => '',
-            'name' => '',
-            'input_type' => 'text',
-            'placeholder' => ''
-    ],$props );
 
-    return 
-    " 
-    <div class='input-icon'>
-        <label for='{$p['name']}'>{$p['label']}</label>
-        <input id='{$p['name']}' name='{$p['name']}' type='{$p['input_type']}' placeholder='{$p['placeholder']}' required/>
-    </div>
-    ";
+// ADDING MENUS - HEADER AND FOOTER
+
+function pms_setup(){
+    add_theme_support('menus');
+    register_nav_menu('primary', 'Primary Header');
+    register_nav_menu('secondary', 'Footer Navigation');
 }
-add_shortcode('input_tag', 'attributes_short_code');
+// ADDING NAVWALKER CLASS
+if ( ! file_exists( get_template_directory() . '/class-wp-bootstrap-navwalker.php' ) ) {
+    return new WP_Error( 'class-wp-bootstrap-navwalker-missing', __( 'It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
+} else {
+    require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action('init','pms_setup');
+
+
+// SHORTCODES FRAMEWORK
+// function attributes_short_code($props){
+//     $p = shortcode_atts([
+//             'label' => 'Name',
+//             'value' => '',
+//             'name' => '',
+//             'input_type' => 'text',
+//             'placeholder' => ''
+//     ],$props );
+
+//     return 
+//     " 
+//     <div class='input-icon'>
+//         <label for='{$p['name']}'>{$p['label']}</label>
+//         <input id='{$p['name']}' name='{$p['name']}' type='{$p['input_type']}' placeholder='{$p['placeholder']}' required/>
+//     </div>
+//     ";
+// }
+// add_shortcode('input_tag', 'attributes_short_code');
