@@ -1,6 +1,5 @@
 <?php
 /*
-
 Template Name: Login Page
 */
 ?>
@@ -24,7 +23,7 @@ Template Name: Login Page
             <button type="Login" class="btnreg" name="login">Login</button>
 
             <p class="form-alt">
-                Don't have an account? <a href="<?php echo site_url('/register') ?>">Sign up here</a>
+                Don't have an account? <a href="<?php echo site_url('/register') ?>">Signup here</a>
             </p>
         </div>
 

@@ -28,7 +28,7 @@ Template Name: Sign up Page
                 <label for="password">Password:</label>
                     <input type="password" placeholder="Enter password" name="password" required>
             </div>
-            <button class="btnreg" type="Signup" name="signup">Register</button>
+            <button class="btnreg" type="Signup" name="signup">Signup</button>
 
             <p class="form-alt">
                 Already have an account? <a href="<?php echo site_url('/login') ?>">Login</a>
