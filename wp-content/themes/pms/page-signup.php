@@ -1,11 +1,8 @@
 <?php
 /*
-
-Template Name: Sign-up Page
+Template Name: Sign up Page
 */
-
 ?>
-
 
 <?php get_header(); ?>
 
@@ -15,7 +12,6 @@ Template Name: Sign-up Page
         <form method="POST" action="">
             <div class="form">
                 <h2>Sign Up</h2>
-
 
                 <div class="input1">
                     <label for="employee-number">Employee number:</label>
