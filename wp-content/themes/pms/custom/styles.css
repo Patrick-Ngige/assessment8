@@ -1,11 +1,12 @@
 /* Sign-up and Login custom css */
+
 .form-container {
 	display: flex;
 	height: 100%;
 	width: 100%;
 	align-items: center;
 	justify-content: center;
-	background-color: #f8f8f8;
+	background-color: #DCDFEA;
 	padding: 20px;
 }
 .form {
