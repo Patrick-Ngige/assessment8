@@ -1,4 +1,4 @@
-/* Register custom css */
+/* Sign-up and Login custom css */
 .form-container {
 	display: flex;
 	height: 100%;
@@ -41,4 +41,19 @@
 	font-weight: bolder;
 	margin-top: 20px;
 	width: 100%;
+}
+.form-alt {
+	margin-top: 15px;
+}
+.form-alt a {
+	text-decoration: none;
+	color: #6c4fff;
+}
+
+@media screen and (max-width: 600px) {
+	.regcover {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		width: 100%;
+	}
 }
