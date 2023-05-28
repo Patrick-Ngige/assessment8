@@ -16,4 +16,22 @@ function pms_script_enqueue(){
 
 add_action('wp_enqueue_scripts', 'pms_script_enqueue');
 
-//
+// SHORTCODES FRAMEWORK
+function attributes_short_code($props){
+    $p = shortcode_atts([
+            'label' => 'Name',
+            'value' => '',
+            'name' => '',
+            'input_type' => 'text',
+            'placeholder' => ''
+    ],$props );
+
+    return 
+    " 
+    <div class='input-icon'>
+        <label for='{$p['name']}'>{$p['label']}</label>
+        <input id='{$p['name']}' name='{$p['name']}' type='{$p['input_type']}' placeholder='{$p['placeholder']}' required/>
+    </div>
+    ";
+}
+add_shortcode('input_tag', 'attributes_short_code');
