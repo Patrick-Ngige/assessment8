@@ -7,7 +7,6 @@ Template Name: Sign up Page
 <?php get_header(); ?>
 
 <div class="form-container">
-    <div class="regcover">
 
         <form method="POST" action="">
             <div class="form">
@@ -48,7 +47,6 @@ Template Name: Sign up Page
                 </p>
             </div>
         </form>
-    </div>
 </div>
 
 <?php get_footer(); ?>
