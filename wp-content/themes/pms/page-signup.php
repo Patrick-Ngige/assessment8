@@ -18,15 +18,15 @@ Template Name: Sign up Page
             </div>
             <div class="input1">
                 <label for="username">Username:</label>
-                    <input type="string" placeholder="Enter username" name="username" required>
+                <input type="string" placeholder="Enter username" name="username" required>
             </div>
             <div class="input1">
                 <label for="email">Email Address:</label>
-                    <input type="email" placeholder="Enter email address" name="email" required>
+                <input type="email" placeholder="Enter email address" name="email" required>
             </div>
             <div class="input1">
                 <label for="password">Password:</label>
-                    <input type="password" placeholder="Enter password" name="password" required>
+                <input type="password" placeholder="Enter password" name="password" required>
             </div>
             <button class="btnreg" type="Signup" name="signup">Signup</button>
 
