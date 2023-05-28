@@ -25,21 +25,21 @@ Template Name: Sign-up Page
                     </div>
                 </div>
                 <div class="input1">
-                    <label for="username">Username</label>
+                    <label for="username">Username:</label>
                     <div class="icons1">
                         <ion-icon name="call-outline"></ion-icon>
                         <input type="string" placeholder="Enter username" name="username" required>
                     </div>
                 </div>
                 <div class="input1">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email Address:</label>
                     <div class="icons1">
                         <ion-icon name="mail-outline"></ion-icon>
                         <input type="email" placeholder="Enter email address" name="email" required>
                     </div>
                 </div>
                 <div class="input1">
-                    <label for="password">Password</label>
+                    <label for="password">Password:</label>
                     <div class="icons1">
                         <ion-icon name="lock-open-outline"></ion-icon>
                         <input type="password" placeholder="Enter password" name="password" required>
