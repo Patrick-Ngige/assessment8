@@ -33,4 +33,12 @@ register_activation_hook(__FILE__, 'activate_tickets_plugin');
 function deactivate_tickets_plugin(){
     Base\Deactivate::deactivate();
 }
+<<<<<<< Updated upstream:wp-content/plugins/tickets/tickets.php
 register_deactivation_hook(__FILE__, 'deactivate_tickets_plugin');
+=======
+register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
+
+if(class_exists('Inc\\Init')){
+    Inc\Init::register_services();
+}
+>>>>>>> Stashed changes:wp-content/plugins/pms/pms.php
