@@ -1,18 +1,18 @@
 <?php
 
 /**
- * @package tickets
+ * @package pms
  */
 
 /*
-Plugin Name: Tickets
+Plugin Name: pms
 Plugin URI: http://...
 Description: A ticket management system for project managers and employees
 Version: 1.0.0
 Author: Hope ,Nicholas,Patrick
 Author URI: http://...
 License: GPLv2 or Later
-Text Domain: Tickets plugin
+Text Domain: pms plugin
 */
 
 //Security Check 
@@ -25,12 +25,12 @@ if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
 }
 
 use Inc\Base;
-function activate_tickets_plugin(){
+function activate_pms_plugin(){
     Base\Activate::activate();
 }
-register_activation_hook(__FILE__, 'activate_tickets_plugin');
+register_activation_hook(__FILE__, 'activate_pms_plugin');
 
-function deactivate_tickets_plugin(){
+function deactivate_pms_plugin(){
     Base\Deactivate::deactivate();
 }
-register_deactivation_hook(__FILE__, 'deactivate_tickets_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
