@@ -33,6 +33,7 @@ register_activation_hook(__FILE__, 'activate_pms_plugin');
 function deactivate_pms_plugin(){
     Base\Deactivate::deactivate();
 }
+
 register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
 
 if(class_exists('Inc\\Init')){
