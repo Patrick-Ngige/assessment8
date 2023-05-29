@@ -31,7 +31,7 @@ Template Name: Sign up Page
             <button class="btnreg" type="Signup" name="signup">Signup</button>
 
             <p class="form-alt">
-                Already have an account? <a href="<?php echo site_url('/login') ?>">Login</a>
+                Already have an account? <a href="<?php echo site_url('/login') ?>"><u>Login</u></a>
             </p>
         </div>
     </form>
