@@ -3,6 +3,50 @@
 Template Name: Sign up Page
 */
 ?>
+<?php
+
+if (isset($_POST['signup'])) {
+  // Fetch user inputs
+  $username = $_POST['username'];
+  $employee_number = $_POST('employee_number');
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+ 
+
+  // Validate user inputs
+  $errors = array();
+
+  if (empty($username)) {
+    $errors['full_name'] = 'Please enter a username';
+  }
+
+  if (empty($email)) {
+    $errors['email'] = 'Please enter an email address';
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors['email'] = 'Please enter a valid email address';
+  }
+
+  if (empty($password)) {
+    $errors['password'] = 'Please enter a password';
+  }
+
+
+
+  // Create new user if there are no errors
+  if (empty($errors)) {
+    $user_id = wp_create_user($username, $password, $email,$employee_number);
+    if (is_wp_error($user_id)) {
+      var_dump($user_id);
+      echo '<p class="signup-error">An error occurred while creating your account. Please try again later.</p>';
+    }
+  } else {
+    // Display errors
+    foreach ($errors as $error) {
+      echo '<p class="signup-error">' . $error . '</p>';
+    }
+  }
+}
+?>
 
 <?php get_header(); ?>
 
@@ -14,7 +58,7 @@ Template Name: Sign up Page
 
             <div class="input1">
                 <label for="employee-number">Employee number:</label>
-                <input type="int" placeholder="Enter employee number" name="employee-number" id="employee-number" required>
+                <input type="int" placeholder="Enter employee number" name="employee_number" id="employee-number" required>
             </div>
             <div class="input1">
                 <label for="username">Username:</label>
