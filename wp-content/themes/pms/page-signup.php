@@ -8,7 +8,7 @@ Template Name: Sign up Page
 if (isset($_POST['signup'])) {
   // Fetch user inputs
   $username = $_POST['username'];
-  $employee_number = $_POST('employee_number');
+  $employee_id= $_POST('employee_id');
   $email = $_POST['email'];
   $password = $_POST['password'];
  
@@ -34,7 +34,7 @@ if (isset($_POST['signup'])) {
 
   // Create new user if there are no errors
   if (empty($errors)) {
-    $user_id = wp_create_user($username, $password, $email,$employee_number);
+    $user_id = wp_create_user($username, $password, $email,$employee_id);
     if (is_wp_error($user_id)) {
       var_dump($user_id);
       echo '<p class="signup-error">An error occurred while creating your account. Please try again later.</p>';
@@ -48,7 +48,7 @@ if (isset($_POST['signup'])) {
 }
 ?>
 
-<?php get_header(); ?>
+<?php wp_head();?>
 
 <div class="form-container">
 
@@ -57,8 +57,8 @@ if (isset($_POST['signup'])) {
             <h2>Sign Up</h2>
 
             <div class="input1">
-                <label for="employee-number">Employee number:</label>
-                <input type="int" placeholder="Enter employee number" name="employee_number" id="employee-number" required>
+                <label for="employee_id">Employee id:</label>
+                <input type="int" placeholder="Enter employee_id" name="employee_id" id="employee_id" required>
             </div>
             <div class="input1">
                 <label for="username">Username:</label>

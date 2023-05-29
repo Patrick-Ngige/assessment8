@@ -33,22 +33,9 @@ if ( ! file_exists( get_template_directory() . '/class-wp-bootstrap-navwalker.ph
 add_action('init','pms_setup');
 
 
-// SHORTCODES FRAMEWORK
-// function attributes_short_code($props){
-//     $p = shortcode_atts([
-//             'label' => 'Name',
-//             'value' => '',
-//             'name' => '',
-//             'input_type' => 'text',
-//             'placeholder' => ''
-//     ],$props );
+function custom_logout_redirect() {
+    wp_redirect('http://localhost/may-project/');
+    exit;
+}
+add_action('wp_logout', 'custom_logout_redirect');
 
-//     return 
-//     " 
-//     <div class='input-icon'>
-//         <label for='{$p['name']}'>{$p['label']}</label>
-//         <input id='{$p['name']}' name='{$p['name']}' type='{$p['input_type']}' placeholder='{$p['placeholder']}' required/>
-//     </div>
-//     ";
-// }
-// add_shortcode('input_tag', 'attributes_short_code');
