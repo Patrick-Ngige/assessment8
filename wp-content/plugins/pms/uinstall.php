@@ -1,7 +1,7 @@
 <?php 
 /**
 *
-* @package tickets
+* @package pms
 */
 
 if(!defined('WP_UNINSTALL_PLUGIN')){

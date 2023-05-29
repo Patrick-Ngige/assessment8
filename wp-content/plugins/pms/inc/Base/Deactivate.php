@@ -1,6 +1,6 @@
 <?php
 /**
- * @package tickets
+ * @package pms
  *
  */
 

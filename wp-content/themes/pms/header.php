@@ -22,7 +22,7 @@
             aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'your-theme-slug'); ?>">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost/customtheme/">PMS</a>
+        <a class="navbar-brand" href="http://localhost/may-project/main/">PMS</a>
         <?php
         wp_nav_menu(
             array(
