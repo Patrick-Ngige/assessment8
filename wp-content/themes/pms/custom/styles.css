@@ -6,7 +6,7 @@ body{
 }
 .form-container {
 	display: flex;
-	height: 92vh;
+	height: 100vh;
 	width: 100%;
 	background-color: #DCDFEA;
 	align-items: center;

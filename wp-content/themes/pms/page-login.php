@@ -22,10 +22,10 @@ if (is_user_logged_in()) {
 }
 
 if (isset($_POST['login'])) {
-  $user_email = $_POST['email'];
+  $employee_id = $_POST['email'];
   $user_password = $_POST['password'];
 
-  $user = get_user_by('email', $user_email);
+  $user = get_user_by('email', $employee_id);
 
   if (!$user) {
     echo "Invalid user email.";
@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<?php get_header(); ?>
+<?php wp_head();?>
 
 <div class="form-container">
 
@@ -65,8 +65,8 @@ if (isset($_POST['login'])) {
             <h2>Login</h2>
 
             <div class="input1">
-                <label for="employee-number">Employee number:</label>
-                <input type="int" placeholder="Enter employee number" name="employee-number" required>
+                <label for="employee-number">Employee email:</label>
+                <input type="email" placeholder="Enter email" name="email" required>
             </div>
             <div class="input1">
                 <label for="">Password:</label>
