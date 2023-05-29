@@ -18,7 +18,7 @@
 <body>
 
 <!-- NAVWALKER -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark " style="margin-top: -57px;" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <button class="navbar-toggler" type="button" data-toggle="collapse"
