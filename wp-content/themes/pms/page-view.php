@@ -4,7 +4,10 @@
  * Template Name: View Page
  */
 
-get_header();
+//get_header();
+
+// $data = url ('http://localhost/may-project/wp-json/may-project/v1/projects/');
+
 ?>
 <div style="background-color:#DCDFEA;width:100vw;height:94vh;">
     <div style="padding:1rem;">
@@ -44,7 +47,7 @@ get_header();
                             <input type="hidden" name="ticket_id" value="<?php //echo $result->ticket_id; ?>" />
                             <input type="submit" name="delete" value="Delete"
                                 style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" />
-                            <a href="<?php echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
+                            <a href="<?php //echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
                                 ?>" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:5px;border: #006b0c;border-radius:3px;">Update</a>
                
                 </form>
@@ -52,7 +55,7 @@ get_header();
                 </tr>
                 <tr>
                     <td>
-                        <div class="d-flex align-items-center">
+                        <!-- <div class="d-flex align-items-center"> -->
                             <img src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
                                 alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                             <div class="ms-3">
@@ -74,7 +77,7 @@ get_header();
                             <input type="hidden" name="ticket_id" value="<?php //echo $result->ticket_id; ?>" />
                             <input type="submit" name="delete" value="Delete"
                                 style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" />
-                            <a href="<?php echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
+                            <a href="<?php //echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
                                 ?>" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:5px;border: #006b0c;border-radius:3px;">Update</a>
                
                 </form>
@@ -105,7 +108,7 @@ get_header();
                             <input type="hidden" name="ticket_id" value="<?php //echo $result->ticket_id; ?>" />
                             <input type="submit" name="delete" value="Delete"
                                 style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" />
-                            <a href="<?php echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
+                            <a href="<?php //echo esc_url(add_query_arg('ticket_id', '$result->ticket_id', 'http://localhost/may-project/edit-ticket/'))
                                 ?>" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:5px;border: #006b0c;border-radius:3px;">Update</a>
                
                 </form>
@@ -117,4 +120,4 @@ get_header();
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
