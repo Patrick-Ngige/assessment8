@@ -8,7 +8,7 @@ Template Name: Login Page
 
 <div class="form-container">
 
-    <form action="" method="POST">
+    <form class="form-inside" action="" method="POST">
         <div class="form">
             <h2>Login</h2>
 
@@ -23,7 +23,7 @@ Template Name: Login Page
             <button type="Login" class="btnreg" name="login">Login</button>
 
             <p class="form-alt">
-                Don't have an account? <a href="<?php echo site_url('/register') ?>"><u>Signup here</u></a>
+                Don't have an account? <a style="color:blue" href="<?php echo site_url('/signup') ?>"><u>Signup here</u></a>
             </p>
         </div>
 
