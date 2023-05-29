@@ -36,10 +36,6 @@ function deactivate_pms_plugin(){
 
 register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
 
-register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
-
 if(class_exists('Inc\\Init')){
     Inc\Init::register_services();
-
 }
-
