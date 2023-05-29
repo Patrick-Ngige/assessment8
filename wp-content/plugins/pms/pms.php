@@ -27,6 +27,8 @@ if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
 use Inc\Base;
 function activate_pms_plugin(){
     Base\Activate::activate();
+    // $create_table = new \Inc\Pages\CreateTable();
+    // $create_table->register();
 }
 register_activation_hook(__FILE__, 'activate_pms_plugin');
 
@@ -38,4 +40,15 @@ register_deactivation_hook(__FILE__, 'deactivate_pms_plugin');
 
 if(class_exists('Inc\\Init')){
     Inc\Init::register_services();
+}
+
+
+require_once plugin_dir_path(__FILE__) . 'custom-endpoints.php';
+
+
+add_action( 'rest_api_init', 'pms_register_custom_endpoints' );
+function pms_register_custom_endpoints(){
+
+    $endpoints = new CustomEndpoints();
+    $endpoints->pms_register_custom_endpoints();
 }
