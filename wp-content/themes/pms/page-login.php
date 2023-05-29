@@ -4,6 +4,58 @@ Template Name: Login Page
 */
 ?>
 
+<?php
+if (is_user_logged_in()) {
+  $user = wp_get_current_user();
+  $user_roles = $user->roles;
+
+  if (in_array('administrator', $user_roles)) {
+    wp_redirect('http://localhost/may-project/wp-admin/index.php');
+    exit;
+  } elseif (in_array('contributor', $user_roles)) {
+    wp_redirect('http://localhost/may-project/wp-admin/admin.php?page=events');
+    exit;
+  } elseif (in_array('subscriber', $user_roles)) {
+    wp_redirect('http://localhost/may-project/');
+    exit;
+  }
+}
+
+if (isset($_POST['login'])) {
+  $user_email = $_POST['email'];
+  $user_password = $_POST['password'];
+
+  $user = get_user_by('email', $user_email);
+
+  if (!$user) {
+    echo "Invalid user email.";
+    exit;
+  }
+
+  if (wp_check_password($user_password, $user->user_pass, $user->ID)) {
+    wp_set_current_user($user->ID);
+    wp_set_auth_cookie($user->ID);
+    do_action('wp_login', $user->user_login, $user);
+
+    $user_roles = $user->roles;
+
+    if (in_array('administrator', $user_roles)) {
+      wp_redirect('http://localhost/may-project/wp-admin/index.php');
+      exit;
+    } elseif (in_array('contributor', $user_roles)) {
+      wp_redirect('http://localhost/may-project/wp-admin/admin.php?page=events');
+      exit;
+    } elseif (in_array('subscriber', $user_roles)) {
+      wp_redirect('http://localhost/may-project/');
+      exit;
+    }
+  } else {
+    echo "Invalid password.";
+    exit;
+  }
+}
+?>
+
 <?php get_header(); ?>
 
 <div class="form-container">
