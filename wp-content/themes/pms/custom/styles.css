@@ -1,6 +1,8 @@
 /* Sign-up and Login custom css */
+@import url('https://fonts.googleapis.com/css?family=PT+Serif+Caption:400');
+
 body{
-	
+	font-family: 'PT Serif Caption', serif;
 }
 .form-container {
 	display: flex;
@@ -11,14 +13,14 @@ body{
 	justify-content: center;
 	padding: 20px;
 }
-form{
+.form-inside{
 	width: 40%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
 	border-radius: 15px;
 
 }
-form:hover{
+.form-inside:hover{
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .form {
