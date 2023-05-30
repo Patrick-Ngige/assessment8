@@ -13,10 +13,10 @@ if (is_user_logged_in()) {
     wp_redirect('http://localhost/may-project/wp-admin/index.php');
     exit;
   } elseif (in_array('contributor', $user_roles)) {
-    wp_redirect('http://localhost/may-project/wp-admin/admin.php?page=events');
+    wp_redirect('http://localhost/may-project/view-tickets/');
     exit;
   } elseif (in_array('subscriber', $user_roles)) {
-    wp_redirect('http://localhost/may-project/');
+    wp_redirect('http://localhost/may-project/main/');
     exit;
   }
 }
@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
       if (in_array('administrator', $user_roles)) {
           $redirect_url = 'http://localhost/may-project/wp-admin/index.php';
       } elseif (in_array('contributor', $user_roles)) {
-          $redirect_url = 'http://localhost/may-project/wp-admin/admin.php?page=';
+          $redirect_url = 'http://localhost/may-project/view-tickets/';
       } elseif (in_array('subscriber', $user_roles)) {
           $redirect_url = 'http://localhost/may-project/main/';
       }

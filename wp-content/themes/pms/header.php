@@ -32,10 +32,10 @@
                     // Contributor Role
                 ?>
                     <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="#">View Tickets</a>
+                        <a class="nav-link completed-text" href="http://localhost/may-project/view-tickets/">View Tickets</a>
                     </li>
                     <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="#">Create Ticket</a>
+                        <a class="nav-link completed-text" href="http://localhost/may-project/create-ticket/">Create Ticket</a>
                     </li>
                 <?php
                 } elseif (current_user_can('subscriber')) {
