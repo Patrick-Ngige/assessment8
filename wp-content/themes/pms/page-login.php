@@ -28,30 +28,34 @@ if (isset($_POST['login'])) {
   $user = get_user_by('email', $employee_id);
 
   if (!$user) {
-    echo "Invalid user email.";
-    exit;
+      echo "Invalid user email.";
+      exit;
   }
 
   if (wp_check_password($user_password, $user->user_pass, $user->ID)) {
-    wp_set_current_user($user->ID);
-    wp_set_auth_cookie($user->ID);
-    do_action('wp_login', $user->user_login, $user);
+      wp_set_current_user($user->ID);
+      wp_set_auth_cookie($user->ID);
+      do_action('wp_login', $user->user_login, $user);
 
-    $user_roles = $user->roles;
+      $user_roles = $user->roles;
+      $redirect_url = '';
 
-    if (in_array('administrator', $user_roles)) {
-      wp_redirect('http://localhost/may-project/wp-admin/index.php');
+      if (in_array('administrator', $user_roles)) {
+          $redirect_url = 'http://localhost/may-project/wp-admin/index.php';
+      } elseif (in_array('contributor', $user_roles)) {
+          $redirect_url = 'http://localhost/may-project/wp-admin/admin.php?page=';
+      } elseif (in_array('subscriber', $user_roles)) {
+          $redirect_url = 'http://localhost/may-project/main/';
+      }
+
+      // Append user ID to the redirect URL
+      $redirect_url .= '?user_id=' . $user->ID;
+
+      wp_redirect($redirect_url);
       exit;
-    } elseif (in_array('contributor', $user_roles)) {
-      wp_redirect('http://localhost/may-project/wp-admin/admin.php?page=events');
-      exit;
-    } elseif (in_array('subscriber', $user_roles)) {
-      wp_redirect('http://localhost/may-project/');
-      exit;
-    }
   } else {
-    echo "Invalid password.";
-    exit;
+      echo "Invalid password.";
+      exit;
   }
 }
 ?>
