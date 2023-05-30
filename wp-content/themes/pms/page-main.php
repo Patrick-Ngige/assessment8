@@ -40,7 +40,7 @@ if ($user_id > 0) {
         </div>
     <?php
     } else {
-        // $username = $project_data->assignee;
+       
     ?>
         <div class="main_cont">
             <div class="card-cont">
