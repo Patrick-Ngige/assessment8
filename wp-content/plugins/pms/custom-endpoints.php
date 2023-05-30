@@ -9,77 +9,128 @@ class CustomEndpoints
 {
     function pms_register_custom_endpoints()
     {
-        // Create project endpoint
-        register_rest_route('may-project/v1', '/projects/', array(
-            'methods' => 'GET',
-            'callback' => array($this, 'pms_create_project'),
-            // 'permission_callback' => 'pms_check_permissions',
-        )
+
+        register_rest_route(
+            'pms/v1',
+            '/projects',
+            array(
+                'methods' => 'GET',
+                'callback' => array($this, 'pms_retrieve_project'),
+
+            )
         );
 
-        // Update project endpoint
-        register_rest_route('may-project/v1', '/projects/(?P<id>\d+)', array(
-            'methods' => 'PUT',
-            'callback' => 'pms_update_project',
-            'permission_callback' => 'pms_check_permissions',
-        )
+        register_rest_route(
+            'pms/v1',
+            '/project/(?P<employee_id>\d+)',
+            array(
+                'methods' => 'GET',
+                'callback' => array($this, 'pms_reuse_project'),
+
+            )
         );
 
-        // Delete project endpoint
-        register_rest_route('may-project/v1', '/projects/(?P<id>\d+)', array(
-            'methods' => 'DELETE',
-            'callback' => 'pms_delete_project',
-            'permission_callback' => 'pms_check_permissions',
-        )
+        register_rest_route(
+            'pms/v1',
+            '/projects',
+            array(
+                'methods' => 'POST',
+                'callback' => array($this, 'pms_create_project'),
+
+            )
         );
 
-        // Assign project endpoint
-        register_rest_route('may-project/v1', '/projects/(?P<id>\d+)/assign/(?P<user_id>\d+)', array(
-            'methods' => 'POST',
-            'callback' => 'pms_assign_project',
-            'permission_callback' => 'pms_check_permissions',
-        )
+        register_rest_route(
+            'pms/v1',
+            '/project',
+            array(
+                'methods' => 'POST',
+                'callback' => array($this, 'pms_update_project'),
+
+            )
         );
+
+
     }
 
-    // Callback functions for the endpoints
+
+    function pms_retrieve_project($request)
+    {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'projects';
+
+        $result = "SELECT * FROM $table_name";
+
+        $data = $wpdb->get_results($result);
+
+        return $data;
+
+    }
+
+    function pms_reuse_project($request)
+    {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'projects';
+
+        $employee_id = $request['employee_id'];
+
+
+        $data = $wpdb->get_row("SELECT * FROM $table_name WHERE employee_id = '$employee_id' ");
+
+        return $data;
+    }
+
     function pms_create_project($request)
     {
-          global  $wpdb;
-          $table_name = $wpdb->prefix.'projects';
+        $data = $request->get_json_params();
 
-          $result = "SELECT * FROM $table_name";
+        // print_r($request->get_json_params());
+        $employee_id = $data['employee_id'];
+        $project = $data['project'];
+        $assignee = $data['assignee'];
+        $due_date = $data['due_date'];
 
-          $data = $wpdb->get_results($result);
 
-          return $data;
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'projects';
+
+
+        $data = $wpdb->insert($table_name, array(
+            'employee_id' => $employee_id,
+            'project' => $project,
+            'assignee' => $assignee,
+            'due_date' => $due_date,
+        ));
+
+        return $data;
 
     }
 
     function pms_update_project($request)
     {
-        // Handle project update logic
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'projects';
+        $employee_id = $request['employee_id'];
+        
+        $data = $request->get_json_params();
+
+        $employee_id = $data['employee_id'];
+        $project = $data['project'];
+        $assignee = $data['assignee'];
+        $due_date = $data['due_date'];
+
+
+        $data = array(
+
+            'employee_id' => $employee_id,
+            'project' => $project,
+            'assignee' => $assignee,
+            'due_date' => $due_date,
+        );
+        $condition = array('employee_id' => $employee_id);
+
+        $wpdb->update($table_name, $data, $condition);
     }
 
-    function pms_delete_project($request)
-    {
-        // Handle project deletion logic
-    }
-
-    function pms_assign_project($request)
-    {
-        // Handle project assignment logic
-    }
-
-    // Permission callback function
-    function pms_check_permissions()
-    {
-        // Implement your permission logic here
-        // Check if the current user has the necessary capabilities to perform the action
-        return current_user_can('manage_options');
-    }
-
-    // Register custom endpoints
 
 }
-
