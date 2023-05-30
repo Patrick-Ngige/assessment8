@@ -10,7 +10,8 @@ class Init{
         return [
           
             Pages\ShortCode::class,
-            Pages\CreateTable::class
+            Pages\CreateTable::class,
+            Pages\UserRoles::class
         ];
     }
 
