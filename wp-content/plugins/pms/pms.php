@@ -47,6 +47,7 @@ require_once plugin_dir_path(__FILE__) . 'custom-endpoints.php';
 
 
 add_action( 'rest_api_init', 'pms_register_custom_endpoints' );
+
 function pms_register_custom_endpoints(){
 
     $endpoints = new CustomEndpoints();

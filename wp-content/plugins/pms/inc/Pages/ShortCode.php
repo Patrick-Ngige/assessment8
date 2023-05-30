@@ -21,8 +21,7 @@
  
          $html = '';
  
-         // Fetch projects data using the custom endpoint
-         $response = wp_remote_get('http://localhost/may-project/wp-json/may-project/v1/projects/');
+         $response = wp_remote_get('http://localhost/may-project/wp-json/pms/v1/projects/');
  
          if (!is_wp_error($response) && $response['response']['code'] === 200) {
              $projects = json_decode($response['body']);
@@ -40,8 +39,7 @@
              $html .= '</tr>';
              $html .= '</thead>';
              $html .= '<tbody>';
- 
-             // Loop through each project and display it in a table row
+
              foreach ($projects as $project) {
                  $html .= '<tr>';
                  $html .= '<td>';
@@ -62,8 +60,8 @@
                  $html .= '<td>' . $project->due_date . '</td>';
                  $html .= '<td>';
                  $html .= '<form method="POST">';
-                 $html .= '<a href="' . esc_url(add_query_arg("project_id". $project->employee_id. "http://localhost/may-project/edit-ticket/")) . '" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:6px;border: #006b0c;border-radius:3px;">Update</a>';
-                 $html .= '<input type="hidden" name="project_id" value="' . $project->employee_id . '" />  ';
+                 $html .= '<a href="' . esc_url(add_query_arg("employee_id", $project->employee_id, "/may-project/edit-ticket/")) . '" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:6px;border: #006b0c;border-radius:3px;">Update</a>';
+                 $html .= '<input type="hidden" name="employee_id" value="' . $project->employee_id . '" />  ';
                  $html .= '<input type="submit" name="delete" value="Delete" style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" />';
                  $html .= '</form>';
                  $html .= '</td>';

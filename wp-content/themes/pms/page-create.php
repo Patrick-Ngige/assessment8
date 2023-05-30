@@ -5,43 +5,28 @@
 get_header();
 
 if (isset($_POST['createbtn'])) {
-    // Get project data from the form submission
-    $project_id = $_POST['project_id'];
-    $project_task = $_POST['project_task'];
+    $employee_id = $_POST['employee_id'];
+    $project = $_POST['project'];
     $assignee = $_POST['assignee'];
     $due_date = $_POST['due_date'];
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'projects';
 
-    // Prepare the request data
-    $request_data = array(
-        'title' => $project_id,
-        'description' => $project_task,
-        // Include other project-related data as needed
-    );
+    $created_project =array(
+        'employee_id' => $employee_id,
+        'project' => $project,
+        'assignee' => $assignee,
+        'due_date' => $due_date,
+     );
 
-    // Send the request to the create project endpoint
-    $response = wp_remote_post('http://localhost/may-project/wp-json/may-project/v1/projects', array(
+     $response = wp_remote_post('http://localhost/may-project/wp-json/pms/v1/projects', array(
         'method' => 'POST',
-        'headers' => array(
-            'Content-Type' => 'application/json',
-        ),
-        'body' => json_encode($request_data),
+        'headers' => array('Content-Type' => 'application/json'),
+        'body' => wp_json_encode($created_project),
     ));
 
-    // Handle the response
-    if (is_wp_error($response)) {
-        echo 'Error creating project: ' . $response->get_error_message();
-    } else {
-        $response_code = wp_remote_retrieve_response_code($response);
-        $response_body = wp_remote_retrieve_body($response);
-
-        if ($response_code === 200) {
-            $project_data = json_decode($response_body, true);
-            // Display success message or redirect to the created project page
-        } else {
-            // Display error message or handle the specific response codes accordingly
-        }
-    }
-}
+ }
 
 ?>
 
@@ -60,13 +45,13 @@ if (isset($_POST['createbtn'])) {
                                         <h2 class="fw-bold d-flex align-items-end d-flex justify-content-center align-items-center">Create Project</h2>
 
                                         <div class="form-outline mb-3">
-                                            <label class="form-label" for="form2Example17 " style="font-weight:600;">Project Id:</label>
-                                            <input type="text" id="form2Example17" class="form-control form-control-md" placeholder="Enter project Id" name="project_id" />
+                                            <label class="form-label" for="form2Example17 " style="font-weight:600;">Employee Id:</label>
+                                            <input type="text" id="form2Example17" class="form-control form-control-md" placeholder="Enter project Id" name="employee_id" />
                                         </div>
 
                                         <div class="form-outline mb-3">
-                                            <label class="form-label" for="form2Example27" style="font-weight:600;">Project task:</label>
-                                            <input type="text" id="form2Example27" class="form-control form-control-md" placeholder="Enter project task" name="project_task" />
+                                            <label class="form-label" for="form2Example27" style="font-weight:600;">Project:</label>
+                                            <input type="text" id="form2Example27" class="form-control form-control-md" placeholder="Enter project task" name="project" />
                                         </div>
 
                                         <div class="form-outline mb-3">

@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 /**
  * Template Name: View Page
@@ -120,4 +120,4 @@
     </div>
 </div>
 
-<?php //get_footer(); ?>
+<?php //get_footer(); ?> -->
