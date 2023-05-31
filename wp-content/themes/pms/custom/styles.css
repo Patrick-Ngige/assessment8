@@ -76,6 +76,12 @@ input{
 	text-decoration: none;
 	color: #737476;
 }
+.error-message {
+    color: red;
+	font-weight:500;
+   font-size: 18px;
+}
+
 
 @media screen and (max-width: 600px) {
 	.regcover {
