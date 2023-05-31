@@ -6,15 +6,21 @@
 get_header();
 
 $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
-
 if ($user_id > 0) {
     global $wpdb;
     $table_name = $wpdb->prefix . 'projects';
 
-    $users_table = $wpdb->prefix . 'users';
-    // Retrieve data based on the user ID
-    $project_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE employee_id = %d", $user_id));
-    $user_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $users_table WHERE id =%s",  $user_id));
+
+      $user_data = get_user_by('ID', $user_id);
+
+      if ($user_data) {
+          $user_nicename = $user_data->user_nicename;
+  
+          $project_data = $wpdb->get_row($wpdb->prepare(
+              "SELECT * FROM $table_name WHERE assignee = %s",
+              $user_nicename
+          ));
+        }
 
     if ($project_data && $project_data->project_status == 0) {
         $username = $user_data->user_nicename;
@@ -60,14 +66,22 @@ if ($user_id > 0) {
 }
 
 ?>
+
+
 <?php
-global $wpdb;
-$table_name = $wpdb->prefix . 'projects';
- $wpdb->get_results("SELECT * FROM $table_name");
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
-    $id = $_POST["id"];
-    $wpdb->update($table_name, array("project_status" => 1), array("employee_id" => $id));
+    $user_id = $_POST["id"];
+    global $wpdb;
+    $projects_table = $wpdb->prefix . 'projects';
+    $users_table = $wpdb->prefix . 'users';
+
+    // Retrieve the user_nicename based on the user_id
+    $user_nicename = $wpdb->get_var($wpdb->prepare("SELECT user_nicename FROM $users_table WHERE ID = %d", $user_id));
+    
+    // Update the project_status column of the row in the projects table
+    $wpdb->update($projects_table, array("project_status" => 1), array("assignee" => $user_nicename));
 }
+
 
 ?>
 
@@ -86,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 92vh;
+        height: 88vh;
     }
 
     .due {

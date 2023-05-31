@@ -41,7 +41,7 @@ $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE project_status =
 ">
     <thead>
       <tr>
-        <th scope="col">Employee ID</th>
+        <th scope="col">Project ID</th>
         <th scope="col">Project</th>
         <th scope="col">Status</th>
         <th scope="col">Completion Date</th>
