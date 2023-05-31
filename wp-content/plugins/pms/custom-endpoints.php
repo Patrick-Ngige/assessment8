@@ -67,13 +67,12 @@ class CustomEndpoints
     {
         global $wpdb;
         $table_name = $wpdb->prefix . 'projects';
-
-        $result = "SELECT * FROM $table_name";
-
+    
+        $result = "SELECT * FROM $table_name WHERE `delete` = 0";
+    
         $data = $wpdb->get_results($result);
-
+    
         return $data;
-
     }
 
     function pms_reuse_project($request)
@@ -146,17 +145,14 @@ class CustomEndpoints
         global $wpdb;
         $table_name = $wpdb->prefix . 'projects';
     
-        // Get the employee_id from the request parameters
         $employee_id = $request->get_param('employee_id');
     
-        // Fetch data from the database where project_status = 0 and employee_id matches
         $projects = $wpdb->get_results($wpdb->prepare(
             "SELECT employee_id, project, project_status, completion_date FROM $table_name WHERE project_status = 0 AND employee_id = $employee_id",
             $employee_id
         ));
     
         if (empty($projects)) {
-            // No projects found
             return new WP_Error('no_projects', 'No projects found.', array('status' => 404));
         }
     

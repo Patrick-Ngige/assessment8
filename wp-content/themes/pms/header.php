@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 
     <?php wp_head(); ?>
@@ -16,7 +16,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top:-40px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="margin-top:-40px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
         <a class="navbar-brand logo" href="#">PMS</a>
 
         <!-- Collapsed Hamburger Menu for Small Screens -->
@@ -48,27 +49,28 @@
                 } else if (current_user_can('manage_options')) {
                     // Subscriber Role
                     ?>
-                    <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/view-project/">View
-                            Projects</a>
-                    </li>
-                    <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/create-ticket/">Create
-                            Project</a>
-                    </li>
-                    <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/wp-admin/">Admin Panel</a>
-                    </li>
-                    <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/signup">Create Employee</a>
-                    </li>
+                        <li class="nav-item completed">
+                            <a class="nav-link completed-text" href="http://localhost/may-project/view-project/">View
+                                Projects</a>
+                        </li>
+                        <li class="nav-item completed">
+                            <a class="nav-link completed-text" href="http://localhost/may-project/create-ticket/">Create
+                                Project</a>
+                        </li>
+                        <li class="nav-item completed">
+                            <a class="nav-link completed-text" href="http://localhost/may-project/signup">Create Employee</a>
+                        </li>
+                        <li class="nav-item completed">
+                            <a class="nav-link completed-text" href="http://localhost/may-project/wp-admin/">Admin Panel</a>
+                        </li>
                     <?php
                 } else if (current_user_can('subscriber')) {
                     // Subscriber Role
                     ?>
-                    <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/completed-projects/">Completed Projects</a>
-                    </li>
+                            <li class="nav-item completed">
+                                <a class="nav-link completed-text" href="http://localhost/may-project/completed-projects/">Completed
+                                    Projects</a>
+                            </li>
                     <?php
                 }
                 ?>
@@ -82,7 +84,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
         .completed {
-            
+
             border-radius: 5px;
             padding: 2px;
             margin: 6px 8px;

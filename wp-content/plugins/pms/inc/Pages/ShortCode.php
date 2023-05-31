@@ -50,7 +50,7 @@ class ShortCode
 
             global $wpdb;
             $table_name = $wpdb->prefix . 'projects';
-            $projects = $wpdb->get_results("SELECT * FROM $table_name");
+            $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE deleted = 0 ");
 
             foreach ($projects as $project) {
 
@@ -74,14 +74,14 @@ class ShortCode
                 $html .= '<p class="fw-normal mb-1">' . $project->project . '</p>';
                 $html .= '</td>';
                 $html .= '<td>';
-                $html .= '<span class="text-dark">' . $project->project_status . '</span>';
+                $html .= '<span class="text-dark">' . ($project->project_status == 0 ? 'pending' : 'completed') . '</span>';
                 $html .= '</td>';
                 $html .= '<td>' . $project->due_date . '</td>';
                 $html .= '<td>';
                 $html .= '<form method="POST">';
                 $html .= '<a href="' . esc_url(add_query_arg("employee_id", $project->employee_id, "/may-project/edit-ticket/")) . '" style="background-color: #006b0c;color:white; border-radius:3px;text-decoration:none;padding:6px;border: #006b0c;border-radius:3px;">Update</a>';
                 $html .= '<input type="hidden" name="employee_id" value="' . $project->employee_id . '" />  ';
-                $html .= '<input type="submit" name="delete" value="Delete" style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" />';
+                $html .= '<button type="submit" name="delete" value="' . $project->employee_id . '" style="background-color: #fd434c;color:white; border-radius:3px;padding:5px;border:none;" onclick="return confirm(\'Are you sure you want to delete this project?\')">Delete</button>';
                 $html .= '</form>';
                 $html .= '</td>';
                 $html .= '</tr>';
@@ -96,5 +96,27 @@ class ShortCode
         }
 
         return $html;
+    }
+}
+
+global $wpdb;
+
+global $success_msg;
+global $error_msg;
+$table_name = $wpdb->prefix . 'projects';
+
+
+if (isset($_POST['delete'])) {
+    $employee_id = $_POST['delete'];
+    $data = ['deleted' => 1];
+    $condition = ['employee_id' => $_POST['employee_id']];
+    
+    $deleted = $wpdb->update($table_name, $data, $condition);
+    // echo '<script> location.reload(); </script>';
+  
+    if ($deleted) {
+        $success_msg = "Ticked deleted successfully";
+    } else {
+        $error_msg = "Error deleting ticket";
     }
 }
