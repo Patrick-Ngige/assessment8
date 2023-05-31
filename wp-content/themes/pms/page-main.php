@@ -11,10 +11,13 @@ if ($user_id > 0) {
     global $wpdb;
     $table_name = $wpdb->prefix . 'projects';
 
+    $users_table = $wpdb->prefix . 'users';
+    // Retrieve data based on the user ID
     $project_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE employee_id = %d", $user_id));
+    $user_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $users_table WHERE id =%s",  $user_id));
 
-    if ($project_data && $project_data->project_status == 'pending') {
-        $username = $project_data->assignee;
+    if ($project_data && $project_data->project_status == 0) {
+        $username = $user_data->user_nicename;
         $ticket_id = $project_data->employee_id;
         $task = $project_data->project;
         $due_date = $project_data->due_date;
@@ -30,20 +33,20 @@ if ($user_id > 0) {
                                                 echo  $task; ?></p>
                     <p class="card-text ">Due Date: <u class="due"><?php echo $due_date; ?></u></p>
                     <form method="POST" class="button-cont">
-                        <input type="hidden" name="id" value="<?php echo $project_data->employee_id ?>">
-                        <button type="submit" name="mark-done" value=""style="padding:15px" >Mark Done</button>
+                        <input type="hidden" name="id" value="<?php echo $user_id ?>">
+                        <button type="submit" name="mark-done" style="padding:15px; border:0;">Mark Done</button>
                     </form>
                 </div>
             </div>
         </div>
     <?php
     } else {
-       
+
     ?>
         <div class="main_cont">
             <div class="card-cont">
                 <div class="username">
-                    <h2><?php echo $project_data->assignee; ?></h2>
+                    <h2><?php echo $user_data->user_nicename ?></h2>
                 </div>
                 <div class="card-body card-details">
                     <p class="no-project">No project assigned</p>
@@ -60,17 +63,12 @@ if ($user_id > 0) {
 <?php
 global $wpdb;
 $table_name = $wpdb->prefix . 'projects';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+ $wpdb->get_results("SELECT * FROM $table_name");
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
     $id = $_POST["id"];
-    var_dump($id);
-    $wpdb->update($table_name, array("project_status" => 1), array("id" => $id));
+    $wpdb->update($table_name, array("project_status" => 1), array("employee_id" => $id));
 }
-echo "
-<script>
-window.reload();
-</script>
-";
+
 ?>
 
 
@@ -159,7 +157,7 @@ window.reload();
         align-items: center;
     }
 
-    button{
+    button {
         display: flex;
         justify-content: center;
         width: 50%;
@@ -170,7 +168,7 @@ window.reload();
         text-align: center;
     }
 
-   button:hover {
+    button:hover {
         background-color: #008000;
         color: #ffffff;
     }
