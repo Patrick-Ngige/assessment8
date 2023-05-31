@@ -10,6 +10,7 @@ $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
 if ($user_id > 0) {
     global $wpdb;
     $table_name = $wpdb->prefix . 'projects';
+
     $users_table = $wpdb->prefix . 'users';
     // Retrieve data based on the user ID
     $project_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE employee_id = %d", $user_id));
@@ -97,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         display: flex;
         align-items: center;
         justify-content: center;
-        /* margin-top: 100px; */
         background-color: #DCDFEA;
         padding: 12px;
         width: 100%;

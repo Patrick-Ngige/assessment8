@@ -50,6 +50,15 @@ class CustomEndpoints
             )
         );
 
+        register_rest_route(
+            'pms/v1',
+            '/projects',
+            array(
+                'methods' => 'GET',
+                'callback' => array($this, 'pms_completed_projects'),
+            )
+        );
+
 
     }
 
@@ -130,6 +139,28 @@ class CustomEndpoints
         $condition = array('employee_id' => $employee_id);
 
         $wpdb->update($table_name, $data, $condition);
+    }
+
+    function pms_completed_projects($request)
+    {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'projects';
+    
+        // Get the employee_id from the request parameters
+        $employee_id = $request->get_param('employee_id');
+    
+        // Fetch data from the database where project_status = 0 and employee_id matches
+        $projects = $wpdb->get_results($wpdb->prepare(
+            "SELECT employee_id, project, project_status, completion_date FROM $table_name WHERE project_status = 0 AND employee_id = $employee_id",
+            $employee_id
+        ));
+    
+        if (empty($projects)) {
+            // No projects found
+            return new WP_Error('no_projects', 'No projects found.', array('status' => 404));
+        }
+    
+        return $projects;
     }
 
 

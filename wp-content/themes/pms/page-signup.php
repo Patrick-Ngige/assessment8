@@ -2,6 +2,7 @@
 /*
 Template Name: Sign up Page
 */
+get_header();
 ?>
 <?php
 if (isset($_POST['signup'])) {
@@ -56,33 +57,31 @@ if (isset($_POST['signup'])) {
 
 <?php wp_head();?>
 
-<div class="form-container">
+<div class="form-container" style="height:87vh">
 
-    <form class="form-inside" method="POST" action="">
-        <div class="form">
-            <h2>Sign Up</h2>
+    <form class="form-inside" method="POST" action="" style="height:50vh" >
+        <div class="form" style="height:88vh;margin-top:-7rem;">
+            <h3 style="margin-bottom:-5px;margin-top:-30px;font-weight:700">Sign Up</h3>
 
-            <div class="input1">
+            <div class="input1" style="margin-bottom:-3px;">
                 <label for="employee_id">Employee id:</label>
                 <input type="text" placeholder="Enter employee_id" name="employee_id" id="employee_id" required>
             </div>
-            <div class="input1">
+            <div class="input1" style="margin-bottom:-3px;">
                 <label for="username">Username:</label>
                 <input type="text" placeholder="Enter username" name="username" required>
             </div>
-            <div class="input1">
+            <div class="input1" style="margin-bottom:-3px;">
                 <label for="email">Email Address:</label>
                 <input type="email" placeholder="Enter email address" name="email" required>
             </div>
-            <div class="input1">
+            <div class="input1" style="margin-bottom:-3px;">
                 <label for="password">Password:</label>
                 <input type="password" placeholder="Enter password" name="password" required>
             </div>
-            <button class="btnreg" type="Signup" name="signup">Signup</button>
+            <button class="btnreg" type="Signup" name="signup" style="margin-bottom:-10px;">Signup</button>
 
-            <p class="form-alt">
-                Already have an account? <a style="color:blue" href="<?php echo site_url('/login') ?>"><u>Login</u></a>
-            </p>
+        
         </div>
     </form>
 </div>
