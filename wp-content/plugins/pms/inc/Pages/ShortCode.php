@@ -34,7 +34,7 @@ class ShortCode
         if (!is_wp_error($response) && $response['response']['code'] === 200) {
             $projects = json_decode($response['body']);
 
-            $html .= '<div style="background-color:#DCDFEA;width:100vw;height:90vh;">';
+            $html .= '<div style="background-color:#DCDFEA;width:98.7vw;overflow-x:hidden;height:90vh;">';
             $html .= '<div style="padding:1rem;">';
             $html .= '<table class="table align-middle mb-0 bg-white table-hover" style="width:90%;margin-left:5%;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;margin-top:3%;">';
             $html .= '<thead class="bg-light">';
@@ -62,7 +62,10 @@ class ShortCode
                 $html .= '<div class="d-flex align-items-center">';
 
                 $html .= '<div class="ms-3">';
-                $html .= '<p class="fw-bold mb-1">' . $project->assignee . '</p>';
+                $html .= '<p class="fw-bold mb-1"><i class="bi bi-person-circle" style="margin-right:10px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="green" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg></i>' . $project->assignee . '</p>';
                 $html .= '<p class="text-muted mb-0">' . $user_email . '</p>';
                 $html .= '</div>';
                 $html .= '</div>';

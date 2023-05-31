@@ -151,7 +151,7 @@ class CustomEndpoints
     
         // Fetch data from the database where project_status = 0 and employee_id matches
         $projects = $wpdb->get_results($wpdb->prepare(
-            "SELECT employee_id, project, project_status, completion_date FROM $table_name WHERE project_status = 0 AND employee_id = %d",
+            "SELECT employee_id, project, project_status, completion_date FROM $table_name WHERE project_status = 0 AND employee_id = $employee_id",
             $employee_id
         ));
     

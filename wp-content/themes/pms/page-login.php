@@ -10,10 +10,10 @@ if (is_user_logged_in()) {
   $user_roles = $user->roles;
 
   if (in_array('administrator', $user_roles)) {
-    wp_redirect('http://localhost/may-project/wp-admin/index.php');
+    wp_redirect('http://localhost/may-project/view-project/');
     exit;
   } elseif (in_array('contributor', $user_roles)) {
-    wp_redirect('http://localhost/may-project/view-tickets/');
+    wp_redirect('http://localhost/may-project/view-project/');
     exit;
   } elseif (in_array('subscriber', $user_roles)) {
     wp_redirect('http://localhost/may-project/main/');
@@ -41,14 +41,13 @@ if (isset($_POST['login'])) {
       $redirect_url = '';
 
       if (in_array('administrator', $user_roles)) {
-          $redirect_url = 'http://localhost/may-project/wp-admin/index.php';
+          $redirect_url = 'http://localhost/may-project/view-project/';
       } elseif (in_array('contributor', $user_roles)) {
-          $redirect_url = 'http://localhost/may-project/view-tickets/';
+          $redirect_url = 'http://localhost/may-project/view-project/';
       } elseif (in_array('subscriber', $user_roles)) {
           $redirect_url = 'http://localhost/may-project/main/';
       }
 
-      // Append user ID to the redirect URL
       $redirect_url .= '?user_id=' . $user->ID;
 
       wp_redirect($redirect_url);
@@ -77,10 +76,6 @@ if (isset($_POST['login'])) {
                 <input type="password" placeholder="Enter password" name="password" required>
             </div>
             <button type="Login" class="btnreg" name="login">Login</button>
-
-            <p class="form-alt">
-                Don't have an account? <a style="color:blue" href="<?php echo site_url('/signup') ?>"><u>Signup here</u></a>
-            </p>
         </div>
 
     </form>
