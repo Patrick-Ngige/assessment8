@@ -11,11 +11,9 @@ if ($user_id > 0) {
     global $wpdb;
     $table_name = $wpdb->prefix . 'projects';
 
-    // Retrieve data based on the user ID
     $project_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE employee_id = %d", $user_id));
 
-
-    if ($project_data && $project_data->project_status == 0) {
+    if ($project_data && $project_data->project_status == 'pending') {
         $username = $project_data->assignee;
         $ticket_id = $project_data->employee_id;
         $task = $project_data->project;
@@ -102,7 +100,6 @@ window.reload();
         display: flex;
         align-items: center;
         justify-content: center;
-        /* margin-top: 100px; */
         background-color: #DCDFEA;
         padding: 12px;
         width: 100%;

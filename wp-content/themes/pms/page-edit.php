@@ -20,11 +20,11 @@ if (!is_wp_error($response) && $response['response']['code'] === 200) {
 
 ?>
 
-<section style="background-color: #DBDFEA; overflow-y:hidden;height:94vh; ">
-  <div class="container py-5 h-auto">
+<section style="background-color: #DBDFEA; overflow-y:hidden;height:88vh; ">
+  <div class="container py-3 h-auto">
     <div class="row d-flex justify-content-center align-items-center h-auto">
       <div class="col col-xl-10" style="width:40vw;">
-        <div class="card" style="border-radius: 1rem;">
+        <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
           <div class="row g-0 w-100 d-flex justify-content-center align-items-center w-50 " style="width:40vw;">
             <div class="row g-0 w-100 d-flex justify-content-center align-items-center w-50 " style="width:40vw;">
               <div class="col-md-6 col-lg-7 d-flex justify-content-center align-items-center  ms-8"

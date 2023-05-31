@@ -20,11 +20,13 @@ if (isset($_POST['createbtn'])) {
         'due_date' => $due_date,
     );
 
-    $response = wp_remote_post('http://localhost/may-project/wp-json/pms/v1/projects', array(
-        'method' => 'POST',
-        'headers' => array('Content-Type' => 'application/json'),
-        'body' => wp_json_encode($created_project),
-    )
+    $response = wp_remote_post(
+        'http://localhost/may-project/wp-json/pms/v1/projects',
+        array(
+            'method' => 'POST',
+            'headers' => array('Content-Type' => 'application/json'),
+            'body' => wp_json_encode($created_project),
+        )
     );
 
 }
@@ -33,20 +35,20 @@ if (isset($_POST['createbtn'])) {
 
 ?>
 
-<?php  
+<?php
 
 global $wpdb;
-$table = $wpdb->prefix.'users';
+$table = $wpdb->prefix . 'users';
 
 $names = $wpdb->get_col("SELECT user_nicename FROM $table ");
 
 ?>
 
-<section style="background-color: #DBDFEA; overflow-y:hidden;height:90vh; ">
-    <div class="container py-5 h-auto">
+<section style="background-color: #DBDFEA; overflow-y:hidden;height:88vh; ">
+    <div class="container py-4 h-auto">
         <div class="row d-flex justify-content-center align-items-center h-auto">
             <div class="col col-xl-10" style="width:40vw;">
-                <div class="card" style="border-radius: 1rem;">
+                <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                     <div class="row g-0 w-100 d-flex justify-content-center align-items-center w-50 "
                         style="width:40vw;">
                         <div class="row g-0 w-100 d-flex justify-content-center align-items-center w-50 "
@@ -63,40 +65,50 @@ $names = $wpdb->get_col("SELECT user_nicename FROM $table ");
 
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="form2Example17 "
-                                                style="font-weight:600;">Employee Id:</label>
+                                                style="font-weight:600;">Project Id:</label>
                                             <input type="text" id="form2Example17" class="form-control form-control-md"
-                                                placeholder="Enter project Id" name="employee_id" />
+                                                placeholder="Enter project Id" name="employee_id" required />
                                         </div>
 
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="form2Example27"
                                                 style="font-weight:600;">Project:</label>
                                             <input type="text" id="form2Example27" class="form-control form-control-md"
-                                                placeholder="Enter project task" name="project" />
+                                                placeholder="Enter project task" name="project" required />
                                         </div>
 
                                         <div>
                                             <label>Assignee: </label><br>
 
                                             <select class="form-select" aria-label="Default select example"
-                                                name="assignee">
+                                                name="assignee" required>
                                                 <option selected></option>
 
-                                                <?php foreach ($names as $username) { ?>
+                                                <?php
+                                             
+                                                $subscribers = get_users(array('role' => 'subscriber')); 
+                                                
+                                                foreach ($subscribers as $subscriber) {
+                                                    $username = $subscriber->user_login; 
+                                                    ?>
+
                                                     <option>
                                                         <?php echo $username ?>
                                                     </option>
+
                                                 <?php } ?>
                                             </select>
 
                                         </div>
 
+
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="form2Example27" style="font-weight:600;">Due
                                                 date:</label>
                                             <input type="date" id="form2Example27" class="form-control form-control-md"
-                                                name="due_date" />
+                                                name="due_date" required min="<?php echo date('Y-m-d'); ?>" />
                                         </div>
+
 
                                         <div class="pt-1 mb-4 w-100 d-flex justify-content-center align-items-center">
                                             <button class="btn btn-dark btn-lg btn-block w-50 " type="submit"
