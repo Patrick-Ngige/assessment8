@@ -50,7 +50,7 @@ class ShortCode
 
             global $wpdb;
             $table_name = $wpdb->prefix . 'projects';
-            $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE deleted = 0 ");
+            $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE deleted =  0");
 
             foreach ($projects as $project) {
 
@@ -74,7 +74,7 @@ class ShortCode
                 $html .= '<p class="fw-normal mb-1">' . $project->project . '</p>';
                 $html .= '</td>';
                 $html .= '<td>';
-                $html .= '<span class="text-dark">' . ($project->project_status == 0 ? 'pending' : 'completed') . '</span>';
+                $html .= '<span class="text-dark">' . ($project->project_status == 0 ? '<span style="color:#fd434c">Active</span>' : '<span style="color:#006b0c">Completed</span>') . '</span>';
                 $html .= '</td>';
                 $html .= '<td>' . $project->due_date . '</td>';
                 $html .= '<td>';

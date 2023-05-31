@@ -71,6 +71,11 @@
                                 <a class="nav-link completed-text" href="http://localhost/may-project/completed-projects/">Completed
                                     Projects</a>
                             </li>
+                            <li class="nav-item completed">
+                                <a class="nav-link completed-text"
+                                    href="http://localhost/may-project/main/?user_id=<?php echo $user_id; ?>">Active</a>
+                            </li>
+
                     <?php
                 }
                 ?>
