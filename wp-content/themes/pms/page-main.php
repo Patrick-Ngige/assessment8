@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 92vh;
+        height: 87vh;
     }
 
     .due {
@@ -99,9 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         align-items: center;
         justify-content: center;
         background-color: #DCDFEA;
-        padding: 12px;
+        padding: 10px;
         width: 100%;
-        margin: 20px 5px;
+        margin: 20px 5px 0px 5px;
         border-radius: 30px;
     }
 
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         background-color: #F8F9FB;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
-        padding: 0px 100px;
+        padding: 0px 80px;
         margin-top: 15px;
         width: 50%;
         border-radius: 12px;
@@ -124,11 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
     }
 
     p {
-        font-size: 28px;
+        font-size: 18px;
     }
 
     h2 {
-        font-size: 44px;
+        font-size: 30px;
     }
 
     .card-details {
@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 42px;
+        font-size: 26px;
         font-weight: 700;
         color: red;
     }
@@ -164,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         border-radius: 10px;
         background-color: #228B22;
         color: #ffffff;
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
     }
 
@@ -172,5 +172,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mark-done"])) {
         background-color: #008000;
         color: #ffffff;
     }
+    
 </style>
 <?php get_footer(); ?>

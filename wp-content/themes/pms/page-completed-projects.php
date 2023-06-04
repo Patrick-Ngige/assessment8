@@ -8,8 +8,8 @@ $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
 
 global $wpdb;
 $table_name = $wpdb->prefix . 'projects';
-$projects = $wpdb->get_results("SELECT * FROM $table_name WHERE project_status = 1 ");
-
+$projects = $wpdb->get_results("SELECT * FROM $table_name WHERE project_status = 1 AND assignee = 'user_nicename' ");
+var_dump($projects);
 ?>
 <div style="background-color:#DBDFEA;height:88vh" ;>
   <div style="display:flex;justify-content:center;font-size:40px;color:#000000;">
@@ -41,7 +41,7 @@ $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE project_status =
 ">
     <thead>
       <tr>
-        <th scope="col">Employee ID</th>
+        <th scope="col">Assignee</th>
         <th scope="col">Project</th>
         <th scope="col">Status</th>
         <th scope="col">Completion Date</th>
@@ -51,7 +51,7 @@ $projects = $wpdb->get_results("SELECT * FROM $table_name WHERE project_status =
       <?php foreach ($projects as $project) { ?>
         <tr>
           <td>
-            <?php echo $project->employee_id; ?>
+            <?php echo $project->assignee; ?>
           </td>
           <td>
             <?php echo $project->project; ?>

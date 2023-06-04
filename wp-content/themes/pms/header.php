@@ -17,7 +17,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
-        style="margin-top:-40px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+        style="margin-top:-47px;padding-top:20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
         <a class="navbar-brand logo" href="#">PMS</a>
 
         <!-- Collapsed Hamburger Menu for Small Screens -->
@@ -35,7 +35,7 @@
                     // Contributor Role
                     ?>
                     <li class="nav-item completed">
-                        <a class="nav-link completed-text" href="http://localhost/may-project/view-project/">View
+                        <a class="nav-link completed-text" style="color:black;font-weight:700;" href="http://localhost/may-project/view-project/">View
                             Projects</a>
                     </li>
                     <li class="nav-item completed">
@@ -58,10 +58,12 @@
                                 Project</a>
                         </li>
                         <li class="nav-item completed">
-                            <a class="nav-link completed-text" href="http://localhost/may-project/signup">Create Employee</a>
+                            <a class="nav-link completed-text" href="http://localhost/may-project/signup">Create
+                                Employee</a>
                         </li>
                         <li class="nav-item completed">
-                            <a class="nav-link completed-text" href="http://localhost/may-project/wp-admin/">Admin Panel</a>
+                            <a class="nav-link completed-text" href="http://localhost/may-project/wp-admin/">Admin
+                                Panel</a>
                         </li>
                     <?php
                 } else if (current_user_can('subscriber')) {
@@ -80,62 +82,77 @@
                 }
                 ?>
                 <li class="nav-item logout">
-                    <a class="nav-link logout-text" href="<?php echo wp_logout_url(home_url()); ?>">Logout</a>
+                    <a class="nav-link logout-text pulse" href="<?php echo wp_logout_url(home_url()); ?>">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
-        .completed {
+    .completed {
+        border-radius: 5px;
+        padding: 2px;
+        margin: 6px 8px;
+        color: aqua;
+        font-weight: 400;
+    }
 
-            border-radius: 5px;
-            padding: 2px;
-            margin: 6px 8px;
+    .completed:hover {
+        text-decoration: wavy, underline;
+        font-weight: 600;
+        color: #fff !important; /* Updated font color to white */
+        background-image: linear-gradient(to right, transparent, #008000);
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: 150% 100%;
+        animation: slideBackground 10s linear infinite;
+    }
 
+    @keyframes slideBackground {
+        0% {
+            background-position: 0 0;
         }
-
-        .completed:hover {
-            background-color: #228B22;
-            color: #ffffff;
+        100% {
+            background-position: 100% 0;
         }
+    }
 
-        .logo {
-            font-size: 36px;
-            font-family: 'Dancing Script', cursive;
-            font-weight: 700;
-            padding-left: 50px;
+    .logo {
+        font-size: 36px;
+        font-family: 'Dancing Script', cursive;
+        font-weight: 700;
+        padding-left: 50px;
+    }
+
+    .logout {
+        /* background-color: #FC0808; */
+        border-radius: 5px;
+        padding: 2px;
+        margin: 6px 8px;
+        color: #FC0808;
+        font-weight: 600;
+    }
+    
+    .logout:hover {
+        text-decoration: wavy, underline;
+        font-weight: 600;
+        color: #fff; /* Updated font color to white */
+        background-image: linear-gradient(to right, transparent, #FC0808);
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        animation: slideBackground 10s linear infinite;
+    }
+
+    @keyframes slideBackground {
+        0% {
+            background-position: 0 0;
         }
-
-        .completed-text {
-
-            color: #228B22;
-            font-weight: 600;
+        100% {
+            background-position: 50% 0;
         }
+    }
+</style>
 
-        .completed-text:hover {
-            color: #ffffff;
-        }
 
-        .logout {
-            /* background-color: #FC0808; */
-            border-radius: 5px;
-            padding: 2px;
-            margin: 6px 8px;
-        }
-
-        .logout:hover {
-            background-color: #FC0808;
-            color: #ffffff;
-        }
-
-        .logout-text {
-            color: #FC0808;
-            font-weight: 600;
-        }
-
-        .logout-text:hover {
-            color: #ffffff;
-        }
-    </style>
