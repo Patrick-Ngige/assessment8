@@ -1,2 +1,2 @@
 # May Project
-Monthly project for May
+Project Management System using WordPress: custom plugin and themes
